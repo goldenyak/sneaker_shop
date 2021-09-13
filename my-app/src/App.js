@@ -1,10 +1,10 @@
-import logo from './img/logo.png';
+
 import './App.scss';
 
 function App() {
     return (
-        <div className="wrapper">
-            <header>
+        <div className='wrapper clear'>
+            <header className='d-flex justify-between align-center p-40'>
                 <div className='headerLeft'>
                     <img className='logo' src='/img/logo.png'/>
                     <div className='headerInfo'>
@@ -12,13 +12,13 @@ function App() {
                         <p className='headerDescr'>Магазин лучших кроссовок</p>
                     </div>
                 </div>
-                <ul className='headerRight'>
-                    <li>
-                        <img width={18} height={18} src='/icons/cart.svg'/>
+                <ul className='d-flex align-center'>
+                    <li className='align-center mr-30'>
+                        <img className='iconCart' width={15} height={15} src='/icons/cart.svg'/>
                         <span>1205 руб.</span>
                     </li>
                     <li>
-                        <img width={18} height={18} src='/icons/user.svg'/>
+                        <img width={15} height={15} src='/icons/user.svg'/>
                     </li>
                 </ul>
             </header>
