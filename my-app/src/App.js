@@ -8,7 +8,7 @@ function App() {
                 <div className='headerLeft'>
                     <img className='logo' src='/img/logo.png'/>
                     <div className='headerInfo'>
-                        <h3 className='headerTitle'>REACT SNEAKERS</h3>
+                        <h3 className='headerTitle text-uppercase'>REACT SNEAKERS</h3>
                         <p className='headerDescr'>Магазин лучших кроссовок</p>
                     </div>
                 </div>
@@ -22,7 +22,7 @@ function App() {
                     </li>
                 </ul>
             </header>
-            <div className='content'>
+            <div className='content p-40'>
                 <h1> Все кроссовки </h1>
                 .....
             </div>
