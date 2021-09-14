@@ -23,82 +23,72 @@ function App() {
             </header>
 
             <section className='content p-40'>
+                {/*Заголовок "Все кроссовки" и input*/}
                 <div className='d-flex justify-between align-center mb-30'>
                     <h1> Все кроссовки </h1>
-                    <div className='search_block'>
+                    <div className='search_block d-flex'>
                         <img src='/icons/search.svg' alt='Search'/>
                         <input placeholder='Поиск...'/>
                     </div>
                 </div>
 
-                <div className='d-flex justify-between flex-wrap'>
+                {/*Карточки товаров*/}
+                <div className='cards d-flex justify-between flex-wrap'>
                     <div className='items d-flex flex-column justify-between mb-40'>
+                        <img className='cards_liked' width={26} height={26} src='/icons/liked.svg'/>
                         <img width={133} height={112} src='/img/sneakers1.png'/>
-                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270 </div>
-                        <div className='d-flex flex-column'>
-                            <span className='opacity-5'>Цена:</span>
-                            <span> 12 299 руб.</span>
+                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270</div>
+                        <div className='d-flex align-center'>
+                            <div className='d-flex flex-column'>
+                                <span className='opacity-5 text-uppercase'>Цена:</span>
+                                <span className='price'> 12 299 руб.</span>
+                            </div>
+                            <div className='plus ml-30'>
+                                <img width={32} height={32} src='/icons/plus.svg'/>
+                            </div>
                         </div>
                     </div>
                     <div className='items d-flex flex-column justify-between'>
+                        <img className='cards_liked' width={26} height={26} src='/icons/unliked.svg'/>
                         <img width={133} height={112} src='/img/sneakers2.png'/>
-                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270 </div>
-                        <div className='d-flex flex-column'>
-                            <span className='opacity-5'>Цена:</span>
-                            <span> 12 299 руб.</span>
+                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270</div>
+                        <div className='d-flex align-center'>
+                            <div className='d-flex flex-column'>
+                                <span className='opacity-5 text-uppercase'>Цена:</span>
+                                <span className='price'> 12 299 руб.</span>
+                            </div>
+                            <div className='plus ml-30'>
+                                <img width={32} height={32} src='/icons/plus.svg'/>
+                            </div>
                         </div>
                     </div>
                     <div className='items d-flex flex-column justify-between'>
                         <img width={133} height={112} src='/img/sneakers3.png'/>
-                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270 </div>
-                        <div className='d-flex flex-column'>
-                            <span className='opacity-5'>Цена:</span>
-                            <span> 12 299 руб.</span>
+                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270</div>
+                        <div className='d-flex align-center'>
+                            <div className='d-flex flex-column'>
+                                <span className='opacity-5 text-uppercase'>Цена:</span>
+                                <span className='price'> 12 299 руб.</span>
+                            </div>
+                            <div className='plus ml-30'>
+                                <img width={32} height={32} src='/icons/plus.svg'/>
+                            </div>
                         </div>
                     </div>
                     <div className='items d-flex flex-column justify-between'>
                         <img width={133} height={112} src='/img/sneakers4.png'/>
-                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270 </div>
-                        <div className='d-flex flex-column'>
-                            <span className='opacity-5'>Цена:</span>
-                            <span> 12 299 руб.</span>
-                        </div>
-                    </div>
-                    <div className='items d-flex flex-column justify-between'>
-                        <img width={133} height={112} src='/img/sneakers4.png'/>
-                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270 </div>
-                        <div className='d-flex flex-column'>
-                            <span className='opacity-5'>Цена:</span>
-                            <span> 12 299 руб.</span>
-                        </div>
-                    </div>
-                    <div className='items d-flex flex-column justify-between'>
-                        <img width={133} height={112} src='/img/sneakers4.png'/>
-                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270 </div>
-                        <div className='d-flex flex-column'>
-                            <span className='opacity-5'>Цена:</span>
-                            <span> 12 299 руб.</span>
-                        </div>
-                    </div>
-                    <div className='items d-flex flex-column justify-between'>
-                        <img width={133} height={112} src='/img/sneakers4.png'/>
-                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270 </div>
-                        <div className='d-flex flex-column'>
-                            <span className='opacity-5'>Цена:</span>
-                            <span> 12 299 руб.</span>
-                        </div>
-                    </div>
-                    <div className='items d-flex flex-column justify-between'>
-                        <img width={133} height={112} src='/img/sneakers4.png'/>
-                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270 </div>
-                        <div className='d-flex flex-column'>
-                            <span className='opacity-5'>Цена:</span>
-                            <span> 12 299 руб.</span>
+                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270</div>
+                        <div className='d-flex align-center'>
+                            <div className='d-flex flex-column'>
+                                <span className='opacity-5 text-uppercase'>Цена:</span>
+                                <span className='price'> 12 299 руб.</span>
+                            </div>
+                            <div className='plus ml-30'>
+                                <img width={32} height={32} src='/icons/plus.svg'/>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
             </section>
         </section>
     );
