@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
+* {
+  font-family: 'Inter', serif;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', serif;
@@ -62,4 +66,35 @@ header {
   }
 }
 
+.search_block {
+  border: 1px solid #F3F3F3;
+  border-radius: 10px;
+  padding: 5px;
+  align-items: center;
+
+  img {
+    margin-right: 10px;
+  }
+
+  input {
+    border: none;
+  }
+}
+
+.items {
+  width: 210px;
+  height: 260px;
+  border: 1px solid #F3F3F3;
+  border-radius: 30px;
+  padding-top: 22px;
+  padding-bottom: 32px;
+  padding-left: 38px;
+
+  .items_descr {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
 
