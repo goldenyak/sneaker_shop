@@ -3,6 +3,25 @@ import './App.scss';
 function App() {
     return (
         <section className='wrapper clear'>
+            {/*DRAWER - корзина товаров*/}
+            <div className='drawer'>
+                <div className='drawer_item d-flex justify-between align-center mb-20 '>
+                    <img width={70} height={70} src='/img/sneakers2.png'/>
+                    <div className='description d-flex flex-column'>
+                        <h3> Мужские Кроссовки Nike Air Max 270 </h3>
+                        <span className='price'>12 999 руб.</span>
+                    </div>
+                    <img src='/icons/plus.svg'/>
+                </div>
+                <div className='drawer_item d-flex justify-between align-center mb-20 '>
+                    <img width={70} height={70} src='/img/sneakers4.png'/>
+                    <div className='description d-flex flex-column'>
+                        <h3> Мужские Кроссовки Nike Air Max 270 </h3>
+                        <span className='price'>12 999 руб.</span>
+                    </div>
+                    <img src='/icons/plus.svg'/>
+                </div>
+            </div>
             <header className='d-flex justify-between align-center p-40'>
                 <div className='headerLeft'>
                     <img className='logo' src='/img/logo.png'/>
