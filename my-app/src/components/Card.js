@@ -1,8 +1,12 @@
+import {useState} from "react";
+
 function Card(props) {
 
+    const [isAdded, setIsAdded] = useState(false)
     const onPlus = () => {
-        alert(props.price)
+        setIsAdded(true)
     }
+
     return (
         <div className='items d-flex flex-column justify-between mb-40'>
             <img className='cards_liked' width={26} height={26} src='/icons/unliked.svg'/>
@@ -14,7 +18,7 @@ function Card(props) {
                     <span className='price'> {props.price} руб.</span>
                 </div>
                 <div className='plus ml-30'>
-                    <img onClick={onPlus} width={32} height={32} src='/icons/plus.svg'/>
+                    <img onClick={onPlus} width={32} height={32} src={isAdded ? '/icons/checked.svg' : '/icons/plus.svg'}/>
                 </div>
             </div>
         </div>
