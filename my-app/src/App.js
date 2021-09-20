@@ -1,112 +1,34 @@
 import './App.scss';
+import Header from "./components/Header";
+import Card from "./components/Card";
+import Drawer from "./components/Drawer";
+import Search from "./components/Search";
 
 function App() {
+
+    const sneakers = [
+        {title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 12299, imageUrl: '/img/sneakers1.png'},
+        {title: 'Мужские Кроссовки Nike Air Max 270', price: 15600, imageUrl: '/img/sneakers2.png'},
+        {title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 8499, imageUrl: '/img/sneakers3.png'},
+        {title: 'Кроссовки Puma X Aka Boku Future Rider', price: 8999, imageUrl: '/img/sneakers4.png'},
+        {title: 'Мужские Кроссовки Under Armour Curry', price: 15199, imageUrl: '/img/sneakers5.png'},
+        {title: 'Мужские Кроссовки Nike Kyrie 7', price: 11299, imageUrl: '/img/sneakers6.png'},
+        {title: 'Мужские Кроссовки Jordan Air Jordan 11', price: 10799, imageUrl: '/img/sneakers7.png'},
+        {title: 'Мужские Кроссовки Nike LeBron XVIII', price: 16499, imageUrl: '/img/sneakers8.png'},
+    ]
     return (
         <section className='wrapper clear'>
-            {/*DRAWER - корзина товаров*/}
-            <div className='drawer'>
-                <div className='drawer_item d-flex justify-between align-center mb-20 '>
-                    <img width={70} height={70} src='/img/sneakers2.png'/>
-                    <div className='description d-flex flex-column'>
-                        <h3> Мужские Кроссовки Nike Air Max 270 </h3>
-                        <span className='price'>12 999 руб.</span>
-                    </div>
-                    <img src='/icons/plus.svg'/>
-                </div>
-                <div className='drawer_item d-flex justify-between align-center mb-20 '>
-                    <img width={70} height={70} src='/img/sneakers4.png'/>
-                    <div className='description d-flex flex-column'>
-                        <h3> Мужские Кроссовки Nike Air Max 270 </h3>
-                        <span className='price'>12 999 руб.</span>
-                    </div>
-                    <img src='/icons/plus.svg'/>
-                </div>
-            </div>
-            <header className='d-flex justify-between align-center p-40'>
-                <div className='headerLeft'>
-                    <img className='logo' src='/img/logo.png'/>
-                    <div className='headerInfo'>
-                        <h3 className='headerTitle text-uppercase'>REACT SNEAKERS</h3>
-                        <p className='headerDescr'>Магазин лучших кроссовок</p>
-                    </div>
-                </div>
-                <ul className='d-flex align-center'>
-                    <li className='align-center mr-30'>
-                        <img className='iconCart' width={15} height={15} src='/icons/cart.svg'/>
-                        <span>1205 руб.</span>
-                    </li>
-                    <li>
-                        <img width={15} height={15} src='/icons/user.svg'/>
-                    </li>
-                </ul>
-            </header>
-
+            {/*<Drawer/>*/}
+            <Header/>
             <section className='content p-40'>
-                {/*Заголовок "Все кроссовки" и input*/}
                 <div className='d-flex justify-between align-center mb-30'>
                     <h1> Все кроссовки </h1>
-                    <div className='search_block d-flex'>
-                        <img src='/icons/search.svg' alt='Search'/>
-                        <input placeholder='Поиск...'/>
-                    </div>
+                    <Search/>
                 </div>
-
-                {/*Карточки товаров*/}
                 <div className='cards d-flex justify-between flex-wrap'>
-                    <div className='items d-flex flex-column justify-between mb-40'>
-                        <img className='cards_liked' width={26} height={26} src='/icons/liked.svg'/>
-                        <img width={133} height={112} src='/img/sneakers1.png'/>
-                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270</div>
-                        <div className='d-flex align-center'>
-                            <div className='d-flex flex-column'>
-                                <span className='opacity-5 text-uppercase'>Цена:</span>
-                                <span className='price'> 12 299 руб.</span>
-                            </div>
-                            <div className='plus ml-30'>
-                                <img width={32} height={32} src='/icons/plus.svg'/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='items d-flex flex-column justify-between'>
-                        <img className='cards_liked' width={26} height={26} src='/icons/unliked.svg'/>
-                        <img width={133} height={112} src='/img/sneakers2.png'/>
-                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270</div>
-                        <div className='d-flex align-center'>
-                            <div className='d-flex flex-column'>
-                                <span className='opacity-5 text-uppercase'>Цена:</span>
-                                <span className='price'> 12 299 руб.</span>
-                            </div>
-                            <div className='plus ml-30'>
-                                <img width={32} height={32} src='/icons/plus.svg'/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='items d-flex flex-column justify-between'>
-                        <img width={133} height={112} src='/img/sneakers3.png'/>
-                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270</div>
-                        <div className='d-flex align-center'>
-                            <div className='d-flex flex-column'>
-                                <span className='opacity-5 text-uppercase'>Цена:</span>
-                                <span className='price'> 12 299 руб.</span>
-                            </div>
-                            <div className='plus ml-30'>
-                                <img width={32} height={32} src='/icons/plus.svg'/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='items d-flex flex-column justify-between'>
-                        <img width={133} height={112} src='/img/sneakers4.png'/>
-                        <div className='items_descr'> Мужские Кроссовки Nike Air Max 270</div>
-                        <div className='d-flex align-center'>
-                            <div className='d-flex flex-column'>
-                                <span className='opacity-5 text-uppercase'>Цена:</span>
-                                <span className='price'> 12 299 руб.</span>
-                            </div>
-                            <div className='plus ml-30'>
-                                <img width={32} height={32} src='/icons/plus.svg'/>
-                            </div>
-                        </div>
-                    </div>
+                    {sneakers.map(element => <Card title={element.title}
+                                                   price={element.price}
+                                                   imageUrl={element.imageUrl}/>)}
                 </div>
             </section>
         </section>
