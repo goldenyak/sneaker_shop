@@ -4,7 +4,7 @@ function Card(props) {
 
     const [isAdded, setIsAdded] = useState(false)
     const onPlus = () => {
-        setIsAdded(true)
+        setIsAdded(!isAdded)
     }
 
     return (
