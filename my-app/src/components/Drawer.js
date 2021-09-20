@@ -1,6 +1,7 @@
 function Drawer() {
     return (
         <div className='drawer d-flex flex-column justify-between align-start'>
+            <h2>Корзина товаров</h2>
             <div>
                 <div className='drawer_item d-flex justify-between align-center mb-20 '>
                     <img width={70} height={70} src='/img/sneakers2.png'/>

@@ -6,7 +6,7 @@ import Search from "./components/Search";
 
 function App() {
 
-    const sneakers = [
+    const sneakersCards = [
         {title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 12299, imageUrl: '/img/sneakers1.png'},
         {title: 'Мужские Кроссовки Nike Air Max 270', price: 15600, imageUrl: '/img/sneakers2.png'},
         {title: 'Мужские Кроссовки Nike Blazer Mid Suede', price: 8499, imageUrl: '/img/sneakers3.png'},
@@ -26,7 +26,7 @@ function App() {
                     <Search/>
                 </div>
                 <div className='cards d-flex justify-between flex-wrap'>
-                    {sneakers.map(element => <Card title={element.title}
+                    {sneakersCards.map(element => <Card title={element.title}
                                                    price={element.price}
                                                    imageUrl={element.imageUrl}/>)}
                 </div>
