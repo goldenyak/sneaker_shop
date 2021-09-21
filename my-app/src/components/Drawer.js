@@ -1,10 +1,10 @@
-function Drawer({items = []}) {
+function Drawer({items = [], cartOpened }) {
     return (
         <div className='drawer d-flex flex-column align-start'>
 
             <div className='cart_title d-flex justify-between align-center mb-30'>
                 <h2>Корзина товаров</h2>
-                <img width={20} height={20} className='close_icon' src='/icons/close.svg'/>
+                <img onClick={cartOpened} width={20} height={20} className='close_icon' src='/icons/close.svg'/>
             </div>
 
             <div className='mb-50'>

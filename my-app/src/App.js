@@ -37,7 +37,7 @@ function App() {
 
     return (
         <section className='wrapper clear'>
-            {openCart ? <Drawer items={cartItems}/> : null}
+            {openCart ? <Drawer items={cartItems} cartOpened={cartOpened}/> : null}
             <Header cartOpened={cartOpened}/>
             <section className='content p-40'>
                 <div className='d-flex justify-between align-center mb-30'>
