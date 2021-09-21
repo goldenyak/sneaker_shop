@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Card from "./components/Card";
 import Drawer from "./components/Drawer";
 import Search from "./components/Search";
+import {useState} from "react";
 
 function App() {
 
@@ -16,10 +17,16 @@ function App() {
         {title: 'Мужские Кроссовки Jordan Air Jordan 11', price: 10799, imageUrl: '/img/sneakers7.png'},
         {title: 'Мужские Кроссовки Nike LeBron XVIII', price: 16499, imageUrl: '/img/sneakers8.png'},
     ]
+
+    const [openCart, setOpenCart] = useState(false)
+    const cart = () => {
+        setOpenCart(!openCart)
+     }
+
     return (
         <section className='wrapper clear'>
-            {/*<Drawer/>*/}
-            <Header/>
+            {openCart ? <Drawer/> : null}
+            <Header cart={cart}/>
             <section className='content p-40'>
                 <div className='d-flex justify-between align-center mb-30'>
                     <h1> Все кроссовки </h1>
@@ -27,8 +34,8 @@ function App() {
                 </div>
                 <div className='cards d-flex justify-between flex-wrap'>
                     {sneakersCards.map(element => <Card title={element.title}
-                                                   price={element.price}
-                                                   imageUrl={element.imageUrl}/>)}
+                                                        price={element.price}
+                                                        imageUrl={element.imageUrl}/>)}
                 </div>
             </section>
         </section>

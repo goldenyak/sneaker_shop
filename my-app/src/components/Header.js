@@ -1,4 +1,5 @@
-function Header() {
+function Header(props) {
+
     return (
         <header className='d-flex justify-between align-center p-40'>
             <div className='headerLeft'>
@@ -10,7 +11,7 @@ function Header() {
             </div>
             <ul className='d-flex align-center'>
                 <li className='align-center mr-30'>
-                    <img className='iconCart' width={15} height={15} src='/icons/cart.svg'/>
+                    <img onClick={props.cart} className='iconCart' width={15} height={15} src='/icons/cart.svg'/>
                     <span>1205 руб.</span>
                 </li>
                 <li>
@@ -18,6 +19,7 @@ function Header() {
                 </li>
             </ul>
         </header>
-        )
+    )
 }
+
 export default Header;
