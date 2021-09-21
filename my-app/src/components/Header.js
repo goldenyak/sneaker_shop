@@ -11,7 +11,7 @@ function Header(props) {
             </div>
             <ul className='d-flex align-center'>
                 <li className='align-center mr-30'>
-                    <img onClick={props.cart} className='iconCart' width={15} height={15} src='/icons/cart.svg'/>
+                    <img onClick={props.cartOpened} className='iconCart' width={15} height={15} src='/icons/cart.svg'/>
                     <span>1205 руб.</span>
                 </li>
                 <li>
