@@ -53,10 +53,12 @@ function App() {
                     {/*<Search/>*/}
                 </div>
                 <div className='cards d-flex justify-between flex-wrap'>
-                    {items.map(element => <Card title={element.title}
-                                                price={element.price}
-                                                imageUrl={element.imageUrl}
-                                                addToCart={(obj) => addToCart(obj)}/>)}
+                    {items.filter(element => element.title.toLowerCase().includes(searchValue.toLowerCase())).map(element =>
+                        <Card
+                        title={element.title}
+                        price={element.price}
+                        imageUrl={element.imageUrl}
+                        addToCart={(obj) => addToCart(obj)}/>)}
                 </div>
             </section>
         </section>
