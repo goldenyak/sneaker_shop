@@ -31,7 +31,6 @@ function App() {
     }
     const onChangeSearchInput = (event) => {
         setSearchValue(event.currentTarget.value)
-        console.log('hello')
     }
 
     return (
@@ -43,8 +42,13 @@ function App() {
                     <h1> {searchValue ? `Поиск по слову: "${searchValue}"` : 'Все кроссовки'} </h1>
                     <div className='search_block d-flex'>
                         <img src='/icons/search.svg' alt='Search'/>
-                        <input onChange={onChangeSearchInput} value={searchValue} placeholder='Поиск...'/>
-                        {searchValue && <img className='cu-p' onClick={() => setSearchValue('')}  src='/icons/close_search.svg' alt='Search'/>}
+                        <input onChange={onChangeSearchInput}
+                               value={searchValue}
+                               placeholder='Поиск...'/>
+                        {searchValue && <img className='cu-p'
+                                             onClick={() => setSearchValue('')}
+                                             src='/icons/close_search.svg'
+                                             alt='Close'/>}
                     </div>
                     {/*<Search/>*/}
                 </div>
