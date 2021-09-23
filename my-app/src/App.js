@@ -8,17 +8,7 @@ import React, {useState} from "react";
 function App() {
 
     const [items, setItems] = useState([])
-    const [cartItems, setcartItems] = useState([
-        {
-            "title": "Мужские Кроссовки Nike Blazer Mid Suede",
-            "price": 12299,
-            "imageUrl": "/img/sneakers1.png"
-        },
-        {
-            "title": "Мужские Кроссовки Nike Air Max 270",
-            "price": 15600,
-            "imageUrl": "/img/sneakers2.png"
-        }])
+    const [cartItems, setcartItems] = useState([])
 
     React.useEffect(() => {
         fetch('https://614a2f5207549f001755a841.mockapi.io/items')
@@ -34,6 +24,10 @@ function App() {
     const cartOpened = () => {
         setOpenCart(!openCart)
     }
+    const addToCart = (obj) => {
+        setcartItems([...cartItems, obj])
+        console.log(obj)
+    }
 
     return (
         <section className='wrapper clear'>
@@ -47,7 +41,8 @@ function App() {
                 <div className='cards d-flex justify-between flex-wrap'>
                     {items.map(element => <Card title={element.title}
                                                 price={element.price}
-                                                imageUrl={element.imageUrl}/>)}
+                                                imageUrl={element.imageUrl}
+                                                addToCart={(obj) => addToCart(obj)}/>)}
                 </div>
             </section>
         </section>
