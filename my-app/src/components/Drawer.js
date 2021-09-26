@@ -1,4 +1,4 @@
-function Drawer({items = [], cartOpened }) {
+function Drawer({items = [], cartOpened, removeToCart }) {
     return (
         <div className='drawer d-flex flex-column align-start'>
 
@@ -15,7 +15,7 @@ function Drawer({items = [], cartOpened }) {
                             <h3> {element.title} </h3>
                             <span className='price'>{element.price} руб.</span>
                         </div>
-                        <img className='close_icon' src='/icons/close.svg'/>
+                        <img onClick={() => removeToCart(element.id)} className='close_icon' src='/icons/close.svg'/>
                     </div>
                 ))}
             </div>

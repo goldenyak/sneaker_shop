@@ -8,31 +8,38 @@ import axios from "axios";
 function App() {
 
     const [items, setItems] = useState([])
-    const [cartItems, setcartItems] = useState([])
+    const [cartItems, setCartItems] = useState([])
     const [searchValue, setSearchValue] = useState('')
 
     React.useEffect(() => {
-            fetch('https://614a2f5207549f001755a841.mockapi.io/items')
-                .then(res => {
-                    return res.json()
-                })
-                .then(json => {
-                    setItems(json)
-                });
-
+        // fetch('https://614a2f5207549f001755a841.mockapi.io/items')
+        //     .then(res => {
+        //         return res.json()
+        //     })
+        //     .then(json => {
+        //         setItems(json)
+        //     });
         axios.get('https://614a2f5207549f001755a841.mockapi.io/items').then(res => {
-            console.log(res.data)
-
+            setItems(res.data)
         });
-        }, [])
+        axios.get('https://614a2f5207549f001755a841.mockapi.io/cart').then(res => {
+            setCartItems(res.data)
+        });
+    }, [])
 
     const [openCart, setOpenCart] = useState(false)
     const cartOpened = () => {
         setOpenCart(!openCart)
     }
     const addToCart = (obj) => {
-        setcartItems([...cartItems, obj])
+        axios.post('https://614a2f5207549f001755a841.mockapi.io/cart', obj)
+        setCartItems([...cartItems, obj])
         console.log(obj)
+    }
+    const removeToCart = (id) => {
+        console.log(id)
+        // axios.delete(`https://614a2f5207549f001755a841.mockapi.io/cart/${id}`)
+        setCartItems([...cartItems].filter(element => element.id !== id))
     }
     const onChangeSearchInput = (event) => {
         setSearchValue(event.currentTarget.value)
@@ -40,7 +47,7 @@ function App() {
 
     return (
         <section className='wrapper clear'>
-            {openCart ? <Drawer items={cartItems} cartOpened={cartOpened}/> : null}
+            {openCart ? <Drawer items={cartItems} cartOpened={cartOpened} removeToCart={removeToCart}/> : null}
             <Header cartOpened={cartOpened}/>
             <section className='content p-40'>
                 <div className='d-flex justify-between align-center mb-30'>
