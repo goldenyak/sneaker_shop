@@ -8,6 +8,7 @@ import axios from "axios";
 function App() {
 
     const [items, setItems] = useState([])
+    const [openCart, setOpenCart] = useState(false)
     const [cartItems, setCartItems] = useState([])
     const [searchValue, setSearchValue] = useState('')
 
@@ -27,7 +28,6 @@ function App() {
         });
     }, [])
 
-    const [openCart, setOpenCart] = useState(false)
     const cartOpened = () => {
         setOpenCart(!openCart)
     }
@@ -37,8 +37,7 @@ function App() {
         console.log(obj)
     }
     const removeToCart = (id) => {
-        console.log(id)
-        // axios.delete(`https://614a2f5207549f001755a841.mockapi.io/cart/${id}`)
+        axios.delete(`https://614a2f5207549f001755a841.mockapi.io/cart/${id}`)
         setCartItems([...cartItems].filter(element => element.id !== id))
     }
     const onChangeSearchInput = (event) => {
