@@ -41,7 +41,7 @@ function Drawer({items = [], cartOpened, removeToCart}) {
                         <div className='cart_button mt-20'>Оформить заказ</div>
                     </div>
                 </>
-                : <EmptyCart/>}
+                : <EmptyCart cartOpened={cartOpened}/>}
 
 
         </div>
