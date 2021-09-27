@@ -39,6 +39,7 @@ function App() {
         console.log(obj)
     } // Добавление товаров в корзину
     const removeToCart = (id) => {
+        console.log(id)
         axios.delete(`https://614a2f5207549f001755a841.mockapi.io/cart/${id}`)
         setCartItems([...cartItems].filter(element => element.id !== id))
     } // Удаление товаров из корзины
