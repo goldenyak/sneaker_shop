@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-function Card({title, price, imageUrl, addToCart}) {
+function Card({title, price, imageUrl, addToCart, addToFavorite}) {
 
     const [isAdded, setIsAdded] = useState(false) // нажат или не нажат плюсик
     const [favorites, setFavorites] = useState(false) // нажато или не нажато сердечко
@@ -8,14 +8,15 @@ function Card({title, price, imageUrl, addToCart}) {
         addToCart({title, price, imageUrl})
         setIsAdded(!isAdded)
     } // нажимаем на плюсик, чтобы добавить в корзину
-    const addTofavorite = () => {
+    const onClickFavorite = () => {
+        addToFavorite({title, price, imageUrl})
         setFavorites(!favorites)
     } // нажимаем на сердечко, чтобы добавить в мои закладки
 
 
     return (
         <div className='items d-flex flex-column justify-between mb-40'>
-            <img onClick={addTofavorite} className='cards_liked' width={26} height={26}
+            <img onClick={onClickFavorite} className='cards_liked' width={26} height={26}
                  src={favorites ? '/icons/liked.svg' : '/icons/unliked.svg'}/>
             <img width={133} height={112} src={imageUrl}/>
             <div className='items_descr'>{title}</div>

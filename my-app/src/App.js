@@ -12,6 +12,7 @@ function App() {
     const [items, setItems] = useState([]) // Товары
     const [openCart, setOpenCart] = useState(false) // Показ/скрытие корзины
     const [cartItems, setCartItems] = useState([]) // Товары в корзине
+    const [favoritItems, setFavoritItems] = useState([])
     const [searchValue, setSearchValue] = useState('') // Работаем с инпутом ПОИСК
 
     React.useEffect(() => {
@@ -36,8 +37,12 @@ function App() {
     const addToCart = (obj) => {
         axios.post('https://614a2f5207549f001755a841.mockapi.io/cart', obj)
         setCartItems([...cartItems, obj])
-        console.log(obj)
     } // Добавление товаров в корзину
+    const addToFavorite = (obj) => {
+        axios.post('https://614a2f5207549f001755a841.mockapi.io/favorites', obj)
+        setFavoritItems([...favoritItems, obj])
+
+    } // Добавление в мои закладки
     const removeToCart = (id) => {
         console.log(id)
         axios.delete(`https://614a2f5207549f001755a841.mockapi.io/cart/${id}`)
@@ -74,7 +79,8 @@ function App() {
                                 title={element.title}
                                 price={element.price}
                                 imageUrl={element.imageUrl}
-                                addToCart={(obj) => addToCart(obj)}/>)}
+                                addToCart={(obj) => addToCart(obj)}
+                                addToFavorite={addToFavorite}/>)}
                     </div>
                 </section>
             </Route>
