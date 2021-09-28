@@ -5,6 +5,7 @@ import Drawer from "./components/Drawer";
 import React, {useState} from "react";
 import axios from "axios";
 import {Route} from "react-router-dom";
+import Favorites from "./components/Favorites";
 
 
 function App() {
@@ -29,7 +30,10 @@ function App() {
         axios.get('https://614a2f5207549f001755a841.mockapi.io/cart').then(res => {
             setCartItems(res.data)
         });
-    }, []) // Запросы на сервак
+        axios.get('https://614a2f5207549f001755a841.mockapi.io/favorites').then(res => {
+            setFavoritItems(res.data)
+        });
+    }, []) // Запросы на сервак = Получаем данные с сервера.
 
     const cartOpened = () => {
         setOpenCart(!openCart)
@@ -80,12 +84,14 @@ function App() {
                                 price={element.price}
                                 imageUrl={element.imageUrl}
                                 addToCart={(obj) => addToCart(obj)}
-                                addToFavorite={addToFavorite}/>)}
+                                addToFavorite={addToFavorite}
+                                isFavorite={false}/>)}
                     </div>
                 </section>
             </Route>
             <Route path="/favorites">
                 <Header cartOpened={cartOpened}/>
+                <Favorites items={favoritItems}/>
             </Route>
 
 

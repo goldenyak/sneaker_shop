@@ -42,8 +42,6 @@ function Drawer({items = [], cartOpened, removeToCart}) {
                     </div>
                 </>
                 : <EmptyCart cartOpened={cartOpened}/>}
-
-
         </div>
 
     )

@@ -1,9 +1,9 @@
 import {useState} from "react";
 
-function Card({title, price, imageUrl, addToCart, addToFavorite}) {
+function Card({title, price, imageUrl, addToCart, addToFavorite, isFavorite=false}) {
 
     const [isAdded, setIsAdded] = useState(false) // нажат или не нажат плюсик
-    const [favorites, setFavorites] = useState(false) // нажато или не нажато сердечко
+    const [favorites, setFavorites] = useState(isFavorite) // нажато или не нажато сердечко
     const onPlus = () => {
         addToCart({title, price, imageUrl})
         setIsAdded(!isAdded)
