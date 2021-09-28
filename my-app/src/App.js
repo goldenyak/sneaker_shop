@@ -13,7 +13,7 @@ function App() {
     const [items, setItems] = useState([]) // Товары
     const [openCart, setOpenCart] = useState(false) // Показ/скрытие корзины
     const [cartItems, setCartItems] = useState([]) // Товары в корзине
-    const [favoritItems, setFavoritItems] = useState([])
+    const [favoriteItems, setFavoriteItems] = useState([])
     const [searchValue, setSearchValue] = useState('') // Работаем с инпутом ПОИСК
 
     React.useEffect(() => {
@@ -31,7 +31,7 @@ function App() {
             setCartItems(res.data)
         });
         axios.get('https://614a2f5207549f001755a841.mockapi.io/favorites').then(res => {
-            setFavoritItems(res.data)
+            setFavoriteItems(res.data)
         });
     }, []) // Запросы на сервак = Получаем данные с сервера.
 
@@ -44,7 +44,7 @@ function App() {
     } // Добавление товаров в корзину
     const addToFavorite = (obj) => {
         axios.post('https://614a2f5207549f001755a841.mockapi.io/favorites', obj)
-        setFavoritItems([...favoritItems, obj])
+        setFavoriteItems([...favoriteItems, obj])
 
     } // Добавление в мои закладки
     const removeToCart = (id) => {
@@ -57,10 +57,8 @@ function App() {
     } // Работаем с инпутом ПОИСК
 
     return (
-
         <section className='wrapper clear'>
             {openCart ? <Drawer items={cartItems} cartOpened={cartOpened} removeToCart={removeToCart}/> : null}
-
             <Route exact path="/">
                 <Header cartOpened={cartOpened}/>
                 <section className='content p-40'>
@@ -91,7 +89,7 @@ function App() {
             </Route>
             <Route path="/favorites">
                 <Header cartOpened={cartOpened}/>
-                <Favorites items={favoritItems}/>
+                <Favorites items={favoriteItems}/>
             </Route>
 
 
