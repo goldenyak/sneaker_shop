@@ -83,13 +83,14 @@ function App() {
                                 imageUrl={element.imageUrl}
                                 addToCart={(obj) => addToCart(obj)}
                                 addToFavorite={addToFavorite}
-                                isFavorite={false}/>)}
+                                isFavorite={false}
+                            />)}
                     </div>
                 </section>
             </Route>
             <Route path="/favorites">
                 <Header cartOpened={cartOpened}/>
-                <Favorites items={favoriteItems}/>
+                <Favorites items={favoriteItems} addToFavorite={addToFavorite} addToCart={(obj) => addToCart(obj)}/>
             </Route>
 
 
