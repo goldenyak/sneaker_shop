@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-function Favorites({items = [], addToFavorite, addToCart}) {
+function Favorites({items = [], addToFavorite, addToCart, id}) {
     return (
         <section className='content p-40'>
             <div className='d-flex justify-between align-center mb-30'>
@@ -9,6 +9,7 @@ function Favorites({items = [], addToFavorite, addToCart}) {
             <div className='cards d-flex justify-between flex-wrap mt-20'>
                 {items.map(element =>
                     <Card
+                        id={element.id}
                         title={element.title}
                         price={element.price}
                         imageUrl={element.imageUrl}

@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-function Card({title, price, imageUrl, addToCart, addToFavorite, isFavorite=true}) {
+function Card({id, title, price, imageUrl, addToCart, addToFavorite, isFavorite=true}) {
 
     const [isAdded, setIsAdded] = useState(false) // нажат или не нажат плюсик
     const [favorites, setFavorites] = useState(isFavorite) // нажато или не нажато сердечко
@@ -9,7 +9,7 @@ function Card({title, price, imageUrl, addToCart, addToFavorite, isFavorite=true
         setIsAdded(!isAdded)
     } // нажимаем на плюсик, чтобы добавить в корзину
     const onClickFavorite = () => {
-        addToFavorite({title, price, imageUrl})
+        addToFavorite({id, title, price, imageUrl})
         setFavorites(!favorites)
     } // нажимаем на сердечко, чтобы добавить в мои закладки
 

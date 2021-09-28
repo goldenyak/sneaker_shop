@@ -43,14 +43,14 @@ function App() {
         setCartItems([...cartItems, obj])
     } // Добавление товаров в корзину
     const addToFavorite = (obj) => {
-        if (favoriteItems.find(obj => obj.id === obj.id)) {
+        console.log(obj)
+        if (favoriteItems.find(favObj => favObj.id === obj.id)) {
             axios.delete(`https://614a2f5207549f001755a841.mockapi.io/favorites/${obj.id}`)
             setFavoriteItems([...favoriteItems].filter(element => element.id !== obj.id))
         } else {
             axios.post('https://614a2f5207549f001755a841.mockapi.io/favorites', obj)
             setFavoriteItems([...favoriteItems, obj])
         }
-
     } // Добавление в мои закладки
     const removeToCart = (id) => {
         console.log(id)
@@ -83,6 +83,7 @@ function App() {
                     <div className='cards d-flex justify-between flex-wrap mt-20'>
                         {items.filter(element => element.title.toLowerCase().includes(searchValue.toLowerCase())).map(element =>
                             <Card
+                                id={element.id}
                                 title={element.title}
                                 price={element.price}
                                 imageUrl={element.imageUrl}
