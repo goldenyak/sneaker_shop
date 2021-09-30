@@ -39,7 +39,7 @@ function App() {
         setOpenCart(!openCart)
     } // Показ/скрытие корзины
     const addToCart = (obj) => {
-        if (cartItems.find(item => item.id === obj.id)) {
+        if (cartItems.find(item => Number(item.id) === Number(obj.id))) {
             axios.delete(`https://614a2f5207549f001755a841.mockapi.io/favorites/${obj.id}`)
             setCartItems([...cartItems].filter(fItem => fItem.id !== obj.id))
         } else {

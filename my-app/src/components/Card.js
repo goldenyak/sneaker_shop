@@ -5,7 +5,7 @@ function Card({id, title, price, imageUrl, addToCart, addToFavorite, isFavorite=
     const [isAdded, setIsAdded] = useState(false) // нажат или не нажат плюсик
     const [favorites, setFavorites] = useState(isFavorite) // нажато или не нажато сердечко
     const onPlus = () => {
-        addToCart({title, price, imageUrl})
+        addToCart({id, title, price, imageUrl})
         setIsAdded(!isAdded)
     } // нажимаем на плюсик, чтобы добавить в корзину
     const onClickFavorite = () => {
