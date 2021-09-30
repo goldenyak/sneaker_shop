@@ -39,17 +39,21 @@ function App() {
         setOpenCart(!openCart)
     } // Показ/скрытие корзины
     const addToCart = (obj) => {
+        if (cartItems.find(item => item.id === obj.id)) {
+            axios.delete(`https://614a2f5207549f001755a841.mockapi.io/favorites/${obj.id}`)
+            setCartItems([...cartItems].filter(fItem => fItem.id !== obj.id))
+         }
         axios.post('https://614a2f5207549f001755a841.mockapi.io/cart', obj)
         setCartItems([...cartItems, obj])
     } // Добавление товаров в корзину
-    const addToFavorite = (obj) => {
+    const addToFavorite = async (obj) => {
         console.log(obj)
         if (favoriteItems.find(favObj => favObj.id === obj.id)) {
             axios.delete(`https://614a2f5207549f001755a841.mockapi.io/favorites/${obj.id}`)
             setFavoriteItems([...favoriteItems].filter(element => element.id !== obj.id))
         } else {
-            axios.post('https://614a2f5207549f001755a841.mockapi.io/favorites', obj)
-            setFavoriteItems([...favoriteItems, obj])
+            const {data} = await axios.post('https://614a2f5207549f001755a841.mockapi.io/favorites', obj)
+            setFavoriteItems([...favoriteItems, data])
         }
     } // Добавление в мои закладки
     const removeToCart = (id) => {
