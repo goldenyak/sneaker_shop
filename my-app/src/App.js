@@ -40,8 +40,8 @@ function App() {
     } // Показ/скрытие корзины
     const addToCart = (obj) => {
         if (cartItems.find(item => Number(item.id) === Number(obj.id))) {
-            axios.delete(`https://614a2f5207549f001755a841.mockapi.io/favorites/${obj.id}`)
-            setCartItems([...cartItems].filter(fItem => fItem.id !== obj.id))
+            axios.delete(`https://614a2f5207549f001755a841.mockapi.io/cart/${obj.id}`)
+            setCartItems([...cartItems].filter(fItem => Number(fItem.id) !== Number(obj.id)))
         } else {
             axios.post('https://614a2f5207549f001755a841.mockapi.io/cart', obj)
             setCartItems([...cartItems, obj])
