@@ -17,22 +17,18 @@ function App() {
     const [searchValue, setSearchValue] = useState('') // Работаем с инпутом ПОИСК
 
     React.useEffect(() => {
-        // fetch('https://614a2f5207549f001755a841.mockapi.io/items')
-        //     .then(res => {
-        //         return res.json()
-        //     })
-        //     .then(json => {
-        //         setItems(json)
-        //     });
-        axios.get('https://614a2f5207549f001755a841.mockapi.io/items').then(res => {
-            setItems(res.data)
-        });
-        axios.get('https://614a2f5207549f001755a841.mockapi.io/cart').then(res => {
-            setCartItems(res.data)
-        });
-        axios.get('https://614a2f5207549f001755a841.mockapi.io/favorites').then(res => {
-            setFavoriteItems(res.data)
-        });
+        async function fetchData() {
+            const cartResponse = await axios.get('https://614a2f5207549f001755a841.mockapi.io/cart')
+            const favoriteResponse = await axios.get('https://614a2f5207549f001755a841.mockapi.io/favorites')
+            const itemsResponse = await axios.get('https://614a2f5207549f001755a841.mockapi.io/items')
+
+            setCartItems(cartResponse.data)
+            setFavoriteItems(favoriteResponse.data)
+            setItems(itemsResponse.data)
+        }
+
+        fetchData()
+
     }, []) // Запросы на сервак = Получаем данные с сервера.
 
     const cartOpened = () => {
@@ -97,6 +93,7 @@ function App() {
                                 addToFavorite={addToFavorite}
                                 isFavorite={false}
                                 added={cartItems.some(obj => Number(obj.id) === Number(element.id))}
+                                loading={true}
                             />)}
                     </div>
                 </section>
