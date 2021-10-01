@@ -15,12 +15,15 @@ function App() {
     const [cartItems, setCartItems] = useState([]) // Товары в корзине
     const [favoriteItems, setFavoriteItems] = useState([])
     const [searchValue, setSearchValue] = useState('') // Работаем с инпутом ПОИСК
+    const [isLoading, setIsLoading] = useState(true)
 
     React.useEffect(() => {
         async function fetchData() {
             const cartResponse = await axios.get('https://614a2f5207549f001755a841.mockapi.io/cart')
             const favoriteResponse = await axios.get('https://614a2f5207549f001755a841.mockapi.io/favorites')
             const itemsResponse = await axios.get('https://614a2f5207549f001755a841.mockapi.io/items')
+
+            setIsLoading(false)
 
             setCartItems(cartResponse.data)
             setFavoriteItems(favoriteResponse.data)
@@ -62,6 +65,23 @@ function App() {
     const onChangeSearchInput = (event) => {
         setSearchValue(event.currentTarget.value)
     } // Работаем с инпутом ПОИСК
+    const renderItems = () => {
+        const filteredItems = items.filter(element => element.title.toLowerCase().includes(searchValue.toLowerCase()))
+        return (isLoading ? [...Array(8)].map(element => <Card loading={isLoading}/>)
+            : filteredItems).map(element =>
+                <Card
+                    id={element.id}
+                    title={element.title}
+                    price={element.price}
+                    imageUrl={element.imageUrl}
+                    addToCart={(obj) => addToCart(obj)}
+                    addToFavorite={addToFavorite}
+                    isFavorite={false}
+                    added={cartItems.some(obj => Number(obj.id) === Number(element.id))}
+                    loading={isLoading}
+                />)
+
+    } // Через функцию рендерим товары на главной странице в зависимости от того, произошла ли полная загрузка
 
     return (
         <section className='wrapper clear'>
@@ -83,18 +103,19 @@ function App() {
                         </div>
                     </div>
                     <div className='cards d-flex justify-between flex-wrap mt-20'>
-                        {items.filter(element => element.title.toLowerCase().includes(searchValue.toLowerCase())).map(element =>
-                            <Card
-                                id={element.id}
-                                title={element.title}
-                                price={element.price}
-                                imageUrl={element.imageUrl}
-                                addToCart={(obj) => addToCart(obj)}
-                                addToFavorite={addToFavorite}
-                                isFavorite={false}
-                                added={cartItems.some(obj => Number(obj.id) === Number(element.id))}
-                                loading={true}
-                            />)}
+                        {renderItems()}
+                        {/*{items.filter(element => element.title.toLowerCase().includes(searchValue.toLowerCase())).map(element =>*/}
+                        {/*    <Card*/}
+                        {/*        id={element.id}*/}
+                        {/*        title={element.title}*/}
+                        {/*        price={element.price}*/}
+                        {/*        imageUrl={element.imageUrl}*/}
+                        {/*        addToCart={(obj) => addToCart(obj)}*/}
+                        {/*        addToFavorite={addToFavorite}*/}
+                        {/*        isFavorite={false}*/}
+                        {/*        added={cartItems.some(obj => Number(obj.id) === Number(element.id))}*/}
+                        {/*        loading={false}*/}
+                        {/*    />)}*/}
                     </div>
                 </section>
             </Route>

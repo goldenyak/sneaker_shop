@@ -10,7 +10,7 @@ function Card({
                   addToFavorite,
                   isFavorite = true,
                   added = false,
-                  loading = false // React sceleton
+                  loading = true// React skeleton
               }) {
 
     const [isAdded, setIsAdded] = useState(added) // нажат или не нажат плюсик
@@ -26,21 +26,21 @@ function Card({
 
     return (
         <div className='items d-flex flex-column justify-between mb-40'>
-            {loading // React sceleton
+            {loading // React skeleton
                 ?
                 <ContentLoader
                     speed={2}
-                    width={150}
+                    width={135}
                     height={300}
                     viewBox="0 0 150 220"
                     backgroundColor="#f3f3f3"
                     foregroundColor="#ecebeb"
                 >
-                    <rect x="0" y="0" rx="10" ry="10" width="150" height="91" />
-                    <rect x="0" y="118" rx="5" ry="5" width="150" height="15" />
-                    <rect x="0" y="141" rx="5" ry="5" width="93" height="15" />
-                    <rect x="0" y="189" rx="5" ry="5" width="80" height="24" />
-                    <rect x="118" y="185" rx="5" ry="5" width="32" height="32" />
+                    <rect x="0" y="0" rx="10" ry="10" width="150" height="91"/>
+                    <rect x="0" y="125" rx="3" ry="3" width="150" height="10"/>
+                    <rect x="0" y="140" rx="3" ry="3" width="93" height="10"/>
+                    <rect x="0" y="189" rx="5" ry="5" width="80" height="24"/>
+                    <rect x="118" y="185" rx="5" ry="5" width="32" height="32"/>
                 </ContentLoader>
                 :
                 <>
@@ -60,7 +60,6 @@ function Card({
                     </div>
                 </>
             }
-
         </div>
     )
 }
