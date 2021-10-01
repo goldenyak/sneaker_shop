@@ -10,7 +10,7 @@ import Favorites from "./components/Favorites";
 
 function App() {
 
-    const [items, setItems] = useState([]) // Товары
+    const [items, setItems] = useState([]) // Товары - берем с сервера mockapi
     const [openCart, setOpenCart] = useState(false) // Показ/скрытие корзины
     const [cartItems, setCartItems] = useState([]) // Товары в корзине
     const [favoriteItems, setFavoriteItems] = useState([])
@@ -96,6 +96,7 @@ function App() {
                                 addToCart={(obj) => addToCart(obj)}
                                 addToFavorite={addToFavorite}
                                 isFavorite={false}
+                                added={cartItems.some(obj => Number(obj.id) === Number(element.id))}
                             />)}
                     </div>
                 </section>
