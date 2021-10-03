@@ -7,6 +7,7 @@ import axios from "axios";
 import {Route} from "react-router-dom";
 import Favorites from "./components/Favorites";
 
+const AppContext = React.createContext({})
 
 function App() {
 
@@ -69,63 +70,55 @@ function App() {
         const filteredItems = items.filter(element => element.title.toLowerCase().includes(searchValue.toLowerCase()))
         return (isLoading ? [...Array(8)].map(element => <Card loading={isLoading}/>)
             : filteredItems).map(element =>
-                <Card
-                    id={element.id}
-                    title={element.title}
-                    price={element.price}
-                    imageUrl={element.imageUrl}
-                    addToCart={(obj) => addToCart(obj)}
-                    addToFavorite={addToFavorite}
-                    isFavorite={false}
-                    added={cartItems.some(obj => Number(obj.id) === Number(element.id))}
-                    loading={isLoading}
-                />)
+            <Card
+                id={element.id}
+                title={element.title}
+                price={element.price}
+                imageUrl={element.imageUrl}
+                addToCart={(obj) => addToCart(obj)}
+                addToFavorite={addToFavorite}
+                isFavorite={false}
+                added={cartItems.some(obj => Number(obj.id) === Number(element.id))}
+                loading={isLoading}
+            />)
 
     } // Через функцию рендерим товары на главной странице в зависимости от того, произошла ли полная загрузка
 
     return (
-        <section className='wrapper clear'>
-            {openCart ? <Drawer items={cartItems} cartOpened={cartOpened} removeToCart={removeToCart}/> : null}
-            <Route exact path="/">
-                <Header cartOpened={cartOpened}/>
-                <section className='content p-40'>
-                    <div className='d-flex justify-between align-center mb-30'>
-                        <h1> {searchValue ? `Поиск по слову: "${searchValue}"` : 'Все кроссовки'} </h1>
-                        <div className='search_block d-flex'>
-                            <img src='/icons/search.svg' alt='Search'/>
-                            <input onChange={onChangeSearchInput}
-                                   value={searchValue}
-                                   placeholder='Поиск...'/>
-                            {searchValue && <img className='cu-p'
-                                                 onClick={() => setSearchValue('')}
-                                                 src='/icons/close_search.svg'
-                                                 alt='Close'/>}
+        <AppContext.Provider value={{items, cartItems, favoriteItems}}>
+            <section className='wrapper clear'>
+                {openCart ? <Drawer items={cartItems} cartOpened={cartOpened} removeToCart={removeToCart}/> : null}
+                <Route exact path="/">
+                    <Header cartOpened={cartOpened}/>
+                    <section className='content p-40'>
+                        <div className='d-flex justify-between align-center mb-30'>
+                            <h1> {searchValue ? `Поиск по слову: "${searchValue}"` : 'Все кроссовки'} </h1>
+                            <div className='search_block d-flex'>
+                                <img src='/icons/search.svg' alt='Search'/>
+                                <input onChange={onChangeSearchInput}
+                                       value={searchValue}
+                                       placeholder='Поиск...'/>
+                                {searchValue && <img className='cu-p'
+                                                     onClick={() => setSearchValue('')}
+                                                     src='/icons/close_search.svg'
+                                                     alt='Close'/>}
+                            </div>
                         </div>
-                    </div>
-                    <div className='cards d-flex justify-between flex-wrap mt-20'>
-                        {renderItems()}
-                        {/*{items.filter(element => element.title.toLowerCase().includes(searchValue.toLowerCase())).map(element =>*/}
-                        {/*    <Card*/}
-                        {/*        id={element.id}*/}
-                        {/*        title={element.title}*/}
-                        {/*        price={element.price}*/}
-                        {/*        imageUrl={element.imageUrl}*/}
-                        {/*        addToCart={(obj) => addToCart(obj)}*/}
-                        {/*        addToFavorite={addToFavorite}*/}
-                        {/*        isFavorite={false}*/}
-                        {/*        added={cartItems.some(obj => Number(obj.id) === Number(element.id))}*/}
-                        {/*        loading={false}*/}
-                        {/*    />)}*/}
-                    </div>
-                </section>
-            </Route>
-            <Route path="/favorites">
-                <Header cartOpened={cartOpened}/>
-                <Favorites items={favoriteItems} addToFavorite={addToFavorite} addToCart={(obj) => addToCart(obj)}/>
-            </Route>
+                        <div className='cards d-flex justify-between flex-wrap mt-20'>
+                            {renderItems()}
+                        </div>
+                    </section>
+                </Route>
+                <Route path="/favorites">
+                    <Header cartOpened={cartOpened}/>
+                    <Favorites items={favoriteItems}
+                               addToFavorite={addToFavorite}
+                               addToCart={(obj) => addToCart(obj)
+                               }/>
+                </Route>
+            </section>
+        </AppContext.Provider>
 
-
-        </section>
     );
 }
 
