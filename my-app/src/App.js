@@ -7,7 +7,7 @@ import axios from "axios";
 import {Route} from "react-router-dom";
 import Favorites from "./components/Favorites";
 
-const AppContext = React.createContext({})
+export const AppContext = React.createContext({})
 
 function App() {
 
@@ -68,7 +68,7 @@ function App() {
     } // Работаем с инпутом ПОИСК
     const renderItems = () => {
         const filteredItems = items.filter(element => element.title.toLowerCase().includes(searchValue.toLowerCase()))
-        return (isLoading ? [...Array(8)].map(element => <Card loading={isLoading}/>)
+        return (isLoading ? [...Array(8)].map(element => <Card/>)
             : filteredItems).map(element =>
             <Card
                 id={element.id}
@@ -111,10 +111,11 @@ function App() {
                 </Route>
                 <Route path="/favorites">
                     <Header cartOpened={cartOpened}/>
-                    <Favorites items={favoriteItems}
-                               addToFavorite={addToFavorite}
-                               addToCart={(obj) => addToCart(obj)
-                               }/>
+                    <Favorites
+                        addToFavorite={addToFavorite}
+                        addToCart={(obj) => addToCart(obj)}
+                        loading={isLoading}
+                    />
                 </Route>
             </section>
         </AppContext.Provider>
