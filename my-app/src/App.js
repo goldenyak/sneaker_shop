@@ -7,7 +7,7 @@ import axios from "axios";
 import {Route} from "react-router-dom";
 import Favorites from "./components/Favorites";
 
-export const AppContext = React.createContext({})
+export const AppContext = React.createContext({}) // Создаем контекст, чтобы можно было брать данные в любом компоненте и не прокидывать через пропсы
 
 function App() {
 
@@ -66,6 +66,9 @@ function App() {
     const onChangeSearchInput = (event) => {
         setSearchValue(event.currentTarget.value)
     } // Работаем с инпутом ПОИСК
+    const isItemAdded = (id) => {
+        return cartItems.some(obj => Number(obj.id) === Number(id))
+    }
     const renderItems = () => {
         const filteredItems = items.filter(element => element.title.toLowerCase().includes(searchValue.toLowerCase()))
         return (isLoading ? [...Array(8)].map(element => <Card/>)
@@ -78,14 +81,15 @@ function App() {
                 addToCart={(obj) => addToCart(obj)}
                 addToFavorite={addToFavorite}
                 isFavorite={false}
-                added={cartItems.some(obj => Number(obj.id) === Number(element.id))}
+                // added={isItemAdded(element && element.id)}
                 loading={isLoading}
             />)
 
     } // Через функцию рендерим товары на главной странице в зависимости от того, произошла ли полная загрузка
 
     return (
-        <AppContext.Provider value={{items, cartItems, favoriteItems}}>
+        // необходимо все (или только нужные компоненты) обернуть в Provider, чтобы работал useContext
+        <AppContext.Provider value={{items, cartItems, favoriteItems, isItemAdded}}>
             <section className='wrapper clear'>
                 {openCart ? <Drawer items={cartItems} cartOpened={cartOpened} removeToCart={removeToCart}/> : null}
                 <Route exact path="/">
@@ -114,7 +118,6 @@ function App() {
                     <Favorites
                         addToFavorite={addToFavorite}
                         addToCart={(obj) => addToCart(obj)}
-                        loading={isLoading}
                     />
                 </Route>
             </section>

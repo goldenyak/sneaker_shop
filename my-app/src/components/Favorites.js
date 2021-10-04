@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, {useContext} from "react";
 import Card from "./Card";
 import {AppContext} from "../App";
 
-function Favorites({addToFavorite, addToCart, id, loading = true}) {
+function Favorites({addToFavorite, addToCart}) {
 
-    const state = React.useContext(AppContext)
+    const state = useContext(AppContext)
 
     return (
         <section className='content p-40'>
@@ -20,6 +20,7 @@ function Favorites({addToFavorite, addToCart, id, loading = true}) {
                         imageUrl={element.imageUrl}
                         addToCart={(obj) => addToCart(obj)}
                         addToFavorite={addToFavorite}
+                        loading={false}
                     />)
                 }
             </div>

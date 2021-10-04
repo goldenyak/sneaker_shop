@@ -1,5 +1,6 @@
-import {useState} from "react";
+import React, {useContext, useState} from "react";
 import ContentLoader from "react-content-loader"
+import {AppContext} from "../App";
 
 function Card({
                   id,
@@ -13,11 +14,14 @@ function Card({
                   loading = true// React skeleton
               }) {
 
-    const [isAdded, setIsAdded] = useState(added) // нажат или не нажат плюсик
+    const {isItemAdded} = useContext(AppContext)
+    console.log(title, isItemAdded(id))
+
+    // const [isAdded, setIsAdded] = useState(added) // нажат или не нажат плюсик
     const [favorites, setFavorites] = useState(isFavorite) // нажато или не нажато сердечко
     const onPlus = () => {
         addToCart({id, title, price, imageUrl})
-        setIsAdded(!isAdded)
+        // setIsAdded(!isAdded)
     } // нажимаем на плюсик, чтобы добавить в корзину
     const onClickFavorite = () => {
         addToFavorite({id, title, price, imageUrl})
@@ -55,7 +59,7 @@ function Card({
                         </div>
                         <div className='plus ml-30'>
                             <img onClick={onPlus} width={32} height={32}
-                                 src={isAdded ? '/icons/checked.svg' : '/icons/plus.svg'}/>
+                                 src={isItemAdded(id) ? '/icons/checked.svg' : '/icons/plus.svg'}/>
                         </div>
                     </div>
                 </>
