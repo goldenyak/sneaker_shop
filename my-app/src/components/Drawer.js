@@ -1,7 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import EmptyCart from "./EmptyCart";
 
 function Drawer({items = [], cartOpened, removeToCart}) {
+
+    const [isOrderComplete, setIsOrderComplete] = useState(false)
+    const onClickOrder = () => {
+        setIsOrderComplete(true)
+        console.log(isOrderComplete)
+    }
+
     return (
         <div className='drawer d-flex flex-column align-center'>
 
@@ -10,7 +17,7 @@ function Drawer({items = [], cartOpened, removeToCart}) {
                 <img onClick={cartOpened} width={20} height={20} className='close_icon' src='/icons/close.svg'/>
             </div>
 
-            {items.length > 0
+            {items.length > 0 & isOrderComplete === false
                 ? <>
                     <div className='mb-50'>
                         {items.map(element => (
@@ -38,10 +45,12 @@ function Drawer({items = [], cartOpened, removeToCart}) {
                                 <span className='cost_price'>546 руб.</span>
                             </li>
                         </ul>
-                        <div className='cart_button mt-20'>Оформить заказ</div>
+                        <div onClick={onClickOrder} className='cart_button mt-20'>Оформить заказ</div>
                     </div>
                 </>
-                : <EmptyCart cartOpened={cartOpened}/>}
+                : <EmptyCart title={isOrderComplete ? 'Заказ оформлен!' : 'Корзина пустая'}
+                             img={isOrderComplete ? '/img/order.png' : '/img/empty-cart.png'}
+                             description={isOrderComplete ? 'Ваш заказ #18 скоро будет передан курьерской доставке' : 'Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.'}/>}
         </div>
 
     )

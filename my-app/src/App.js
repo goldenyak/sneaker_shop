@@ -50,7 +50,7 @@ function App() {
     } // Добавление товаров в корзину
     const addToFavorite = async (obj) => {
         console.log(obj)
-        if (favoriteItems.find(favObj => favObj.id === obj.id)) {
+        if (favoriteItems.find(favObj => Number(favObj.id) === Number(obj.id))) {
             axios.delete(`https://614a2f5207549f001755a841.mockapi.io/favorites/${obj.id}`)
             setFavoriteItems([...favoriteItems].filter(element => element.id !== obj.id))
         } else {
@@ -89,7 +89,7 @@ function App() {
 
     return (
         // необходимо все (или только нужные компоненты) обернуть в Provider, чтобы работал useContext
-        <AppContext.Provider value={{items, cartItems, favoriteItems, isItemAdded}}>
+        <AppContext.Provider value={{items, cartItems, favoriteItems, isItemAdded, cartOpened}}>
             <section className='wrapper clear'>
                 {openCart ? <Drawer items={cartItems} cartOpened={cartOpened} removeToCart={removeToCart}/> : null}
                 <Route exact path="/">
