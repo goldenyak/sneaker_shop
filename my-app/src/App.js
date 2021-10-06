@@ -68,7 +68,7 @@ function App() {
     } // Работаем с инпутом ПОИСК
     const isItemAdded = (id) => {
         return cartItems.some(obj => Number(obj.id) === Number(id))
-    }
+    } // Нажат плюсик или нет
     const renderItems = () => {
         const filteredItems = items.filter(element => element.title.toLowerCase().includes(searchValue.toLowerCase()))
         return (isLoading ? [...Array(8)].map(element => <Card/>)
@@ -89,7 +89,7 @@ function App() {
 
     return (
         // необходимо все (или только нужные компоненты) обернуть в Provider, чтобы работал useContext
-        <AppContext.Provider value={{items, cartItems, favoriteItems, isItemAdded, cartOpened}}>
+        <AppContext.Provider value={{items, cartItems, favoriteItems, addToFavorite, isItemAdded, cartOpened}}>
             <section className='wrapper clear'>
                 {openCart ? <Drawer items={cartItems} cartOpened={cartOpened} removeToCart={removeToCart}/> : null}
                 <Route exact path="/">

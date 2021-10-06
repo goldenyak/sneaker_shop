@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
+import {AppContext} from "../App";
+import Card from "./Card";
 
 
 function Orders() {
+
+    const {cartItems, addToFavorite} = useContext(AppContext)
 
     return (
         <section className='content p-40'>
@@ -9,6 +13,17 @@ function Orders() {
                 <h1> Мои заказы </h1>
             </div>
             <div className='cards d-flex justify-between flex-wrap mt-20'>
+                {cartItems.map(element =>
+                    <Card
+                        id={element.id}
+                        title={element.title}
+                        price={element.price}
+                        imageUrl={element.imageUrl}
+                        addToFavorite={addToFavorite}
+                        isFavorite={false}
+                        loading={false}
+                    />)
+                }
 
             </div>
         </section>
