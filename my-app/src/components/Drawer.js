@@ -1,7 +1,11 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import EmptyCart from "./EmptyCart";
+import {AppContext} from "../App";
 
 function Drawer({items = [], cartOpened, removeToCart}) {
+
+    const {cartItems} = useContext(AppContext)
+    const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0)
 
     const [isOrderComplete, setIsOrderComplete] = useState(false)
     const onClickOrder = () => {
@@ -37,12 +41,12 @@ function Drawer({items = [], cartOpened, removeToCart}) {
                             <li className='d-flex mb-20'>
                                 <span className='cost_descr'>Итого:</span>
                                 <div className='cart_divider'></div>
-                                <span className='cost_price'>12299 руб.</span>
+                                <span className='cost_price'>{totalPrice} руб.</span>
                             </li>
                             <li className='d-flex'>
                                 <span className='cost_descr'>Налог 5%:</span>
                                 <div className='cart_divider'></div>
-                                <span className='cost_price'>546 руб.</span>
+                                <span className='cost_price'>{totalPrice / 2} руб.</span>
                             </li>
                         </ul>
                         <div onClick={onClickOrder} className='cart_button mt-20'>Оформить заказ</div>

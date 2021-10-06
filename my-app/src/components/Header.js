@@ -30,7 +30,10 @@ function Header() {
                     </Link>
                 </li>
                 <li>
-                    <img className="cu-p" width={15} height={15} src='/icons/user.svg'/>
+                    <Link to="/orders">
+                        <img className="cu-p" width={15} height={15} src='/icons/user.svg'/>
+                    </Link>
+
                 </li>
             </ul>
         </header>

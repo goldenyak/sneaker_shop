@@ -6,6 +6,7 @@ import React, {useState} from "react";
 import axios from "axios";
 import {Route} from "react-router-dom";
 import Favorites from "./components/Favorites";
+import Orders from "./components/Orders";
 
 export const AppContext = React.createContext({}) // Создаем контекст, чтобы можно было брать данные в любом компоненте и не прокидывать через пропсы
 
@@ -49,7 +50,7 @@ function App() {
 
     } // Добавление товаров в корзину
     const addToFavorite = async (obj) => {
-         if (favoriteItems.find(favObj => Number(favObj.id) === Number(obj.id))) {
+        if (favoriteItems.find(favObj => Number(favObj.id) === Number(obj.id))) {
             axios.delete(`https://614a2f5207549f001755a841.mockapi.io/favorites/${obj.id}`)
             setFavoriteItems([...favoriteItems].filter(element => element.id !== obj.id))
         } else {
@@ -118,6 +119,10 @@ function App() {
                         addToFavorite={addToFavorite}
                         addToCart={(obj) => addToCart(obj)}
                     />
+                </Route>
+                <Route path="/orders">
+                    <Header/>
+                    <Orders/>
                 </Route>
             </section>
         </AppContext.Provider>
