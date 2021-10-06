@@ -38,7 +38,7 @@ function App() {
     const cartOpened = () => {
         setOpenCart(!openCart)
     } // Показ/скрытие корзины
-    const addToCart = (obj) => {
+    const addToCart = async (obj) => {
         if (cartItems.find(item => Number(item.id) === Number(obj.id))) {
             axios.delete(`https://614a2f5207549f001755a841.mockapi.io/cart/${obj.id}`)
             setCartItems([...cartItems].filter(fItem => Number(fItem.id) !== Number(obj.id)))
@@ -49,8 +49,7 @@ function App() {
 
     } // Добавление товаров в корзину
     const addToFavorite = async (obj) => {
-        console.log(obj)
-        if (favoriteItems.find(favObj => Number(favObj.id) === Number(obj.id))) {
+         if (favoriteItems.find(favObj => Number(favObj.id) === Number(obj.id))) {
             axios.delete(`https://614a2f5207549f001755a841.mockapi.io/favorites/${obj.id}`)
             setFavoriteItems([...favoriteItems].filter(element => element.id !== obj.id))
         } else {
@@ -114,7 +113,7 @@ function App() {
                     </section>
                 </Route>
                 <Route path="/favorites">
-                    <Header cartOpened={cartOpened}/>
+                    <Header/>
                     <Favorites
                         addToFavorite={addToFavorite}
                         addToCart={(obj) => addToCart(obj)}
