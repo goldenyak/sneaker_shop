@@ -48,8 +48,8 @@ function Card({
                 </ContentLoader>
                 :
                 <>
-                    <img onClick={onClickFavorite} className='cards_liked' width={26} height={26}
-                         src={favorites ? '/icons/liked.svg' : '/icons/unliked.svg'}/>
+                    {addToFavorite && <img onClick={onClickFavorite} className='cards_liked' width={26} height={26}
+                          src={favorites ? '/icons/liked.svg' : '/icons/unliked.svg'}/>}
                     <img width={133} height={112} src={imageUrl}/>
                     <div className='items_descr'>{title}</div>
                     <div className='d-flex align-center'>
@@ -57,10 +57,11 @@ function Card({
                             <span className='opacity-5 text-uppercase'>Цена:</span>
                             <span className='price'> {price} руб.</span>
                         </div>
+                        {addToCart &&
                         <div className='plus ml-30'>
                             <img onClick={onPlus} width={32} height={32}
                                  src={isItemAdded(id) ? '/icons/checked.svg' : '/icons/plus.svg'}/>
-                        </div>
+                        </div>}
                     </div>
                 </>
             }

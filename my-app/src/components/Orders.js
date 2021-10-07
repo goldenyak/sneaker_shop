@@ -19,8 +19,6 @@ function Orders() {
                         title={element.title}
                         price={element.price}
                         imageUrl={element.imageUrl}
-                        addToFavorite={addToFavorite}
-                        isFavorite={false}
                         loading={false}
                     />)
                 }
