@@ -40,13 +40,29 @@ function App() {
         setOpenCart(!openCart)
     } // Показ/скрытие корзины
     const addToCart = async (obj) => {
-        if (cartItems.find(item => Number(item.id) === Number(obj.id))) {
-            axios.delete(`https://614a2f5207549f001755a841.mockapi.io/cart/${obj.id}`)
-            setCartItems([...cartItems].filter(fItem => Number(fItem.id) !== Number(obj.id)))
-        } else {
-            axios.post('https://614a2f5207549f001755a841.mockapi.io/cart', obj)
-            setCartItems([...cartItems, obj])
+        try {
+            const findItem = cartItems.find(item => Number(item.parentID) === Number(obj.id))
+            if (findItem) {
+                setCartItems([...cartItems].filter(item => Number(item.parentID) !== Number(obj.id)))
+                axios.delete(`https://614a2f5207549f001755a841.mockapi.io/cart/${findItem.id}`)
+
+            } else {
+                setCartItems([...cartItems, obj])
+                const {data} = await axios.post('https://614a2f5207549f001755a841.mockapi.io/cart', obj)
+                setCartItems((prev) => prev.map(item => {
+                    if (item.parentID === data.parentID) {
+                        return {
+                            ...item,
+                            id: data.id
+                        }
+                    }
+                    return item
+                }))
+            }
+        } catch (error) {
+            alert('Ошибка при запросе!')
         }
+
 
     } // Добавление товаров в корзину
     const addToFavorite = async (obj) => {
@@ -61,13 +77,14 @@ function App() {
     const removeToCart = (id) => {
         console.log(id)
         axios.delete(`https://614a2f5207549f001755a841.mockapi.io/cart/${id}`)
-        setCartItems([...cartItems].filter(element => element.id !== id))
+        setCartItems([...cartItems].filter(element => Number(element.id) !== Number(id)))
     } // Удаление товаров из корзины
     const onChangeSearchInput = (event) => {
         setSearchValue(event.currentTarget.value)
     } // Работаем с инпутом ПОИСК
     const isItemAdded = (id) => {
-        return cartItems.some(obj => Number(obj.id) === Number(id))
+        console.log(cartItems)
+        return cartItems.some(obj => Number(obj.parentID) === Number(id))
     } // Нажат плюсик или нет
     const renderItems = () => {
         const filteredItems = items.filter(element => element.title.toLowerCase().includes(searchValue.toLowerCase()))

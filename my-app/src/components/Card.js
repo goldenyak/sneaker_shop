@@ -15,13 +15,11 @@ function Card({
               }) {
 
     const {isItemAdded} = useContext(AppContext)
-    console.log(title, isItemAdded(id))
 
     // const [isAdded, setIsAdded] = useState(added) // нажат или не нажат плюсик
     const [favorites, setFavorites] = useState(isFavorite) // нажато или не нажато сердечко
     const onPlus = () => {
-        addToCart({id, title, price, imageUrl})
-        // setIsAdded(!isAdded)
+        addToCart({id, parentID: id, title, price, imageUrl})
     } // нажимаем на плюсик, чтобы добавить в корзину
     const onClickFavorite = () => {
         addToFavorite({id, title, price, imageUrl})
@@ -49,7 +47,7 @@ function Card({
                 :
                 <>
                     {addToFavorite && <img onClick={onClickFavorite} className='cards_liked' width={26} height={26}
-                          src={favorites ? '/icons/liked.svg' : '/icons/unliked.svg'}/>}
+                                           src={favorites ? '/icons/liked.svg' : '/icons/unliked.svg'}/>}
                     <img width={133} height={112} src={imageUrl}/>
                     <div className='items_descr'>{title}</div>
                     <div className='d-flex align-center'>
