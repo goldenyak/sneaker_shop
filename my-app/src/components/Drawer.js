@@ -14,6 +14,7 @@ function Drawer({items = [], cartOpened, removeToCart}) {
     }
 
     return (
+        <div className='overlay'>
         <div className='drawer d-flex flex-column align-center'>
 
             <div className='cart_title d-flex justify-between align-center mb-30'>
@@ -55,6 +56,7 @@ function Drawer({items = [], cartOpened, removeToCart}) {
                 : <EmptyCart title={isOrderComplete ? 'Заказ оформлен!' : 'Корзина пустая'}
                              img={isOrderComplete ? '/img/order.png' : '/img/empty-cart.png'}
                              description={isOrderComplete ? 'Ваш заказ #18 скоро будет передан курьерской доставке' : 'Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.'}/>}
+        </div>
         </div>
 
     )
