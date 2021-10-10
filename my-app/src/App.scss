@@ -213,6 +213,7 @@ header {
 .iconPlus {
   &:hover {
     opacity: 0.6;
+    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.02);
   }
 }
 
@@ -284,6 +285,10 @@ header {
   .cards_liked {
     position: absolute;
     cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+      box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.02);
+    }
   }
 }
 
