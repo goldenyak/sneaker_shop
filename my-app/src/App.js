@@ -109,7 +109,7 @@ function App() {
         <AppContext.Provider value={{items, cartItems, favoriteItems, addToFavorite, isItemAdded, cartOpened}}>
             <section className='wrapper clear'>
                 {openCart ? <Drawer items={cartItems} cartOpened={cartOpened} removeToCart={removeToCart}/> : null}
-                <Route exact path="">
+                <Route exact path="/">
                     <Header cartOpened={cartOpened}/>
                     <section className='content p-40'>
                         <div className='d-flex justify-between align-center mb-30'>
@@ -130,14 +130,14 @@ function App() {
                         </div>
                     </section>
                 </Route>
-                <Route path="favorites" exact>
+                <Route path="/favorites" exact>
                     <Header/>
                     <Favorites
                         addToFavorite={addToFavorite}
                         addToCart={(obj) => addToCart(obj)}
                     />
                 </Route>
-                <Route path="orders" exact>
+                <Route path="/orders" exact>
                     <Header/>
                     <Orders/>
                 </Route>
