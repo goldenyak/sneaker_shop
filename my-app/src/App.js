@@ -130,14 +130,14 @@ function App() {
                         </div>
                     </section>
                 </Route>
-                <Route path="sneakers_shop/favorites">
+                <Route path="favorites" exact>
                     <Header/>
                     <Favorites
                         addToFavorite={addToFavorite}
                         addToCart={(obj) => addToCart(obj)}
                     />
                 </Route>
-                <Route path="orders">
+                <Route path="orders" exact>
                     <Header/>
                     <Orders/>
                 </Route>
