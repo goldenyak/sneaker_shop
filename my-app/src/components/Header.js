@@ -41,7 +41,7 @@ function Header() {
                 </Tooltip>
                 <Tooltip title="Избранные товары" placement="top" arrow>
                     <li>
-                        <Link to="/favorites">
+                        <Link to="favorites">
                             <svg className="iconHeart mr-20 cu-p" width="15" height="15" viewBox="0 0 22 19" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -54,7 +54,7 @@ function Header() {
 
                 <Tooltip title="Мои заказы" placement="top" arrow>
                     <li>
-                        <Link to="/orders">
+                        <Link to="orders">
                             <svg className="iconUser cu-p" width="15" height="15" viewBox="0 0 20 20" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -62,10 +62,8 @@ function Header() {
                                       fill="#9B9B9B"/>
                             </svg>
                         </Link>
-
                     </li>
                 </Tooltip>
-
             </ul>
         </header>
     )

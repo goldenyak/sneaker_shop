@@ -109,19 +109,19 @@ function App() {
         <AppContext.Provider value={{items, cartItems, favoriteItems, addToFavorite, isItemAdded, cartOpened}}>
             <section className='wrapper clear'>
                 {openCart ? <Drawer items={cartItems} cartOpened={cartOpened} removeToCart={removeToCart}/> : null}
-                <Route exact path="/">
+                <Route exact path="">
                     <Header cartOpened={cartOpened}/>
                     <section className='content p-40'>
                         <div className='d-flex justify-between align-center mb-30'>
                             <h1> {searchValue ? `Поиск по слову: "${searchValue}"` : 'Все кроссовки'} </h1>
                             <div className='search_block d-flex'>
-                                <img src='/icons/search.svg' alt='Search'/>
+                                <img src='icons/search.svg' alt='Search'/>
                                 <input onChange={onChangeSearchInput}
                                        value={searchValue}
                                        placeholder='Поиск...'/>
                                 {searchValue && <img className='cu-p'
                                                      onClick={() => setSearchValue('')}
-                                                     src='/icons/close_search.svg'
+                                                     src='icons/close_search.svg'
                                                      alt='Close'/>}
                             </div>
                         </div>
@@ -130,14 +130,14 @@ function App() {
                         </div>
                     </section>
                 </Route>
-                <Route path="/favorites">
+                <Route path="favorites">
                     <Header/>
                     <Favorites
                         addToFavorite={addToFavorite}
                         addToCart={(obj) => addToCart(obj)}
                     />
                 </Route>
-                <Route path="/orders">
+                <Route path="orders">
                     <Header/>
                     <Orders/>
                 </Route>

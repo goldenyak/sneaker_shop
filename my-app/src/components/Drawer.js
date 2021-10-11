@@ -19,7 +19,7 @@ function Drawer({items = [], cartOpened, removeToCart}) {
 
             <div className='cart_title d-flex justify-between align-center mb-30'>
                 <h2>Корзина товаров</h2>
-                <img onClick={cartOpened} width={20} height={20} className='close_icon' src='/icons/close.svg'/>
+                <img onClick={cartOpened} width={20} height={20} className='close_icon' src='icons/close.svg'/>
             </div>
 
             {items.length > 0 & isOrderComplete === false
@@ -33,7 +33,7 @@ function Drawer({items = [], cartOpened, removeToCart}) {
                                     <span className='price'>{element.price} руб.</span>
                                 </div>
                                 <img onClick={() => removeToCart(element.id)} className='close_icon'
-                                     src='/icons/close.svg'/>
+                                     src='icons/close.svg'/>
                             </div>
                         ))}
                     </div>
@@ -54,7 +54,7 @@ function Drawer({items = [], cartOpened, removeToCart}) {
                     </div>
                 </>
                 : <EmptyCart title={isOrderComplete ? 'Заказ оформлен!' : 'Корзина пустая'}
-                             img={isOrderComplete ? '/img/order.png' : '/img/empty-cart.png'}
+                             img={isOrderComplete ? 'img/order.png' : 'img/empty-cart.png'}
                              description={isOrderComplete ? 'Ваш заказ #18 скоро будет передан курьерской доставке' : 'Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.'}/>}
         </div>
         </div>
