@@ -12,7 +12,7 @@ function Header() {
 
     return (
         <header className='d-flex justify-between align-center p-40'>
-            <Link to="sneaker_shop">
+            <Link to="">
                 <div className='headerLeft'>
                     <img className='logo' src='img/logo.png'/>
                     <div className='headerInfo'>
