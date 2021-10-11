@@ -48,7 +48,7 @@ function Card({
                 :
                 <>
                     {addToFavorite && <img onClick={onClickFavorite} className='cards_liked' width={26} height={26}
-                                           src={favorites ? '/icons/liked.svg' : '/icons/unliked.svg'}/>}
+                                           src={favorites ? 'icons/liked.svg' : 'icons/unliked.svg'}/>}
                     <img width={133} height={112} src={imageUrl}/>
                     <div className='items_descr'>{title}</div>
                     <div className='d-flex align-center'>

@@ -14,7 +14,7 @@ function Header() {
         <header className='d-flex justify-between align-center p-40'>
             <Link to="/">
                 <div className='headerLeft'>
-                    <img className='logo' src='/img/logo.png'/>
+                    <img className='logo' src='img/logo.png'/>
                     <div className='headerInfo'>
                         <h3 className='headerTitle text-uppercase'>REACT SNEAKERS</h3>
                         <p className='headerDescr'>Магазин лучших кроссовок</p>
