@@ -130,7 +130,7 @@ function App() {
                         </div>
                     </section>
                 </Route>
-                <Route path="favorites">
+                <Route path="sneakers_shop/favorites">
                     <Header/>
                     <Favorites
                         addToFavorite={addToFavorite}
